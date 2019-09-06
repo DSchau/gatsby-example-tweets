@@ -44,8 +44,6 @@ module.exports = {
           zachleat: {
             endpoint: `statuses/user_timeline`,
             params: {
-              // 200 is the Twitteer API limit
-              count: 200,
               screen_name: `zachleat`,
               tweet_mode: `extended`
             }
