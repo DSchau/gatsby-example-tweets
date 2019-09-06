@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { FaRetweet, FaHeart } from 'react-icons/fa'
 
 import styles from './tweet.module.css'
 
@@ -15,10 +14,10 @@ function Tweet({ user, text, reweets, favorites }) {
         <p className={styles.tweetText}>{text}</p>
         <div className={styles.actions}>
           <div className={styles.action}>
-            <FaRetweet /> {reweets || 0}
+            Retweets: {reweets || 0}
           </div>
           <div className={styles.action}>
-            <FaHeart /> {favorites || 0}
+            Favorites: favorites || 0}
           </div>
         </div>
       </div>
