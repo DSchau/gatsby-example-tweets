@@ -17,7 +17,7 @@ function Tweet({ user, text, reweets, favorites }) {
             Retweets: {reweets || 0}
           </div>
           <div className={styles.action}>
-            Favorites: favorites || 0}
+            Favorites: {favorites || 0}
           </div>
         </div>
       </div>
