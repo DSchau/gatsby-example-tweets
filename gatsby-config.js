@@ -1,7 +1,11 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Twitter with React`,
+    description: `An example of iterating through Twitter tweets with gatsby-source-twitter, Gatsby, and of course, React. That TTI though.`,
     author: `@gatsbyjs`,
   },
   plugins: [
@@ -27,8 +31,26 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-twitter`,
+      options: {
+        credentials: {
+          consumer_key: process.env.TWITTER_CONSUMER_KEY,
+          consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+          bearer_token: process.env.TWITTER_ACCESS_TOKEN
+        },
+        queries: {
+          zachleat: {
+            endpoint: `statuses/user_timeline`,
+            params: {
+              // 200 is the Twitteer API limit
+              count: 200,
+              screen_name: `zachleat`,
+              tweet_mode: `extended`
+            }
+          }
+        }
+      }
+    }
   ],
 }
